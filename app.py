@@ -16,11 +16,16 @@ def homepage():
 def insert():
     error = None
     if request.method == 'GET':
+        # connect to database
         connection = sql.connect('database.db')
+
+        # select all database entries
         cursor = connection.execute('SELECT pid, firstname, lastname FROM users;')
         result = cursor.fetchall()
         if result:
+            # return html page with database entries
             return render_template('insert.html', error=error, result=result)
+
         else:
             error = "couldn't fetch database"
     return render_template("insert.html", error=error)
@@ -30,10 +35,14 @@ def insert():
 def delete():
     error = None
     if request.method == 'GET':
+        # connect to database
         connection = sql.connect('database.db')
+
+        # select all entries from database
         cursor = connection.execute('SELECT pid, firstname, lastname FROM users;')
         result = cursor.fetchall()
         if result:
+            # return html page with database entries
             return render_template('delete.html', error=error, result=result)
         else:
             error = "couldn't fetch database"
@@ -46,6 +55,7 @@ def name():
     if request.method == 'POST':
         result = valid_name(request.form['FirstName'], request.form['LastName'])
         if result:
+            # return html page with database entries
             return render_template('insert.html', error=error, result=result)
         else:
             error = 'invalid input name'
@@ -53,6 +63,7 @@ def name():
 
 
 def valid_name(first_name, last_name):
+    # connect to database
     connection = sql.connect('database.db')
 
     # create table
@@ -81,9 +92,11 @@ def valid_name(first_name, last_name):
         # first entry into database
         pid = 1
 
+    # insert entries into table
     connection.execute('INSERT INTO users (pid, firstname, lastname) VALUES (?,?,?);',
                        (pid, first_name, last_name))
     connection.commit()
+    # select and return all database entries
     cursor = connection.execute('SELECT pid, firstname, lastname FROM users;')
     return cursor.fetchall()
 
@@ -91,6 +104,7 @@ def valid_name(first_name, last_name):
 @app.route('/remove', methods=['POST'])
 def remove():
     error = None
+    # get first name and last name from form
     first_name = request.form['FirstName']
     last_name = request.form['LastName']
 
@@ -106,9 +120,11 @@ def remove():
         connection.execute('DELETE FROM users WHERE firstname=? AND lastname=?;', (first_name, last_name))
         connection.commit()
 
+    # select all entries from database
     cursor = connection.execute('SELECT pid, firstname, lastname FROM users;')
     result = cursor.fetchall()
     if result:
+        # return html page with database entries
         return render_template('delete.html', error=error, result=result)
 
     return render_template('delete.html', error=error)
