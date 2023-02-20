@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Webpage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <header>
+      <div class="banner">
+        <h1 id="title">Hospital Patient Portal</h1>
+      </div><p>This portal allows users to add and delete patient names from the hospital's database.</p>
+    </header>
+
+    <div class="container-sm">
+        <div class="info">
+            <h2><b>Patient Portal</b></h2>
+                <p>
+                    Our patient portals are a convenient way to securely view your personal health information
+                    and interact with Penn State Health. They play a key role in your heath care -
+                    providing a 24/7 connection to the information you need to make better decisions.
+                    We encourage all of our patients to create an account to ensure you have ready access
+                    to your personal health information. It is a convenient, secure website that makes it easy
+                    to communicate with your physicians, pay bills, and make appointments.
+                </p>
+
+        </div>
+
+        <div class="btn-container">
+
+                <label for="options"></label>
+                <select name="action" id="options">
+                    <option value="" selected>Select page to go</option> <!-- default -->
+                    <option value="insert">Add Patient Name</option> <!-- select insert page -->
+                    <option value="delete">Delete Patient Name</option> <!-- select delete page -->
+                </select>
+
+                <button type="submit" id="go-button">Go!</button>
+        </div>
+
+        <script>
+            // Get the dropdown menu element
+            let dropdown = document.getElementById("options");
+
+            // Get the button element
+            let button = document.getElementById("go-button");
+
+            // Add a click event listener to the button
+            button.addEventListener("click", function() {
+              // Get the selected option from the dropdown menu
+              let selectedOption = dropdown.options[dropdown.selectedIndex].value;
+
+              // Redirect to the selected page
+              if (selectedOption === "insert") { // value of option
+                window.location.href = "/insert";
+              } else if (selectedOption === "delete") { // value of option
+                window.location.href = "/delete";
+              }
+            });
+
+        </script>
+    </div>
+</body>
+</html>

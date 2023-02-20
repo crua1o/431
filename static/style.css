@@ -1,0 +1,47 @@
+* {
+    font-family: Roboto, serif;
+}
+
+.banner {
+    background-color: #02A2E3;
+    color: white;
+    padding: 10px;
+}
+
+
+.container-sm {
+    color: black;
+    background-color: #B0E8FF;
+    padding: 30px;
+}
+
+button {
+    font-family: sans-serif;
+    border-radius: 5px;
+}
+
+.btn.btn-primary {
+    background: rgb(19, 180, 19);
+    color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px 15px;
+}
+
+.btn.btn-primary:hover {
+    background: rgb(11, 208, 11);
+    cursor: pointer;
+}
+
+.btn.btn-success {
+    background: rgb(245, 173, 5);
+    color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px 15px;
+}
+
+.btn.btn-success:hover {
+    background: rgb(255, 196, 57);
+    cursor: pointer;
+}
