@@ -7,12 +7,12 @@ created 3 webpages with HTML and use Flask to implement the website functionalit
 There are five files that make up the website design:
 1. app.py: provides functionality to the website using Flask. This includes page redirection, form submission, and database queries. 
 Incorporated is SQLite, which was used to set up the database. Important functions:
-  insert(): directs to the insert.html page along with database information.
-  delete(): directs to the delete.html page along with database information.
-  valid_name(): creates a database table if none exists. inserts a generated PID and a given first name/last name into the database and returns
+  a. insert(): directs to the insert.html page along with database information.
+  b. delete(): directs to the delete.html page along with database information.
+  c. valid_name(): creates a database table if none exists. inserts a generated PID and a given first name/last name into the database and returns
   the database.
-  name(): directs to the insert.hmtl page with an updated database based on first_name and last_name received from html form.
-  remove(): deletes an entry from the database based on a first_name and last_name received from html form. returns the delete.html page
+  d. name(): directs to the insert.hmtl page with an updated database based on first_name and last_name received from html form.
+  e. remove(): deletes an entry from the database based on a first_name and last_name received from html form. returns the delete.html page
   with updated database.
 
 2. homepage.html: html file to create the homepage. Redirects to the other two html pages.
@@ -22,9 +22,9 @@ the name into the users database.
 
 ## Organization
 app.py is organized by function. the most important functions are:
-  homepage(): which directs to the homepage html
-  insert(): which directs to the insert html
-  delete(): which directs to the delete html
+  a. homepage(): which directs to the homepage html
+  b. insert(): which directs to the insert html
+  c. delete(): which directs to the delete html
 The homepage is organized with a simple title banner, simple description, and a dropdown menu to take the user to one of two html pages.
 Insert.html and delete.html are organized with a submit form, which adds (deletes) an entry to (from) the database, which is displayed on the page.
 
